@@ -1,7 +1,7 @@
 {
   "SysId": {
-    "Analysis Type": "General Mechanism",
-    "AnalyzerJSONLocation": "C:\\Users\\Public\\wpilib\\2022\\vscode\\sysid_data20220126-171855.json",
+    "Analysis Type": "Drivetrain",
+    "AnalyzerJSONLocation": "C:\\Users\\Public\\wpilib\\2022\\vscode\\sysid_data20220223-115026.json",
     "NetworkTables Settings": {
       "serverTeam": "2872"
     },

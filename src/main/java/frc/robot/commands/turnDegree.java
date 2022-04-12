@@ -5,39 +5,52 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.DriveTrain;
 
-public class IntakeBall extends CommandBase {
-  /** Creates a new IntakeBall. */
-  Intake intake;
-  public IntakeBall(Intake i) {
-    intake = i;
-    addRequirements(intake);
+public class turnDegree extends CommandBase {
+  /** Creates a new turnDegree. */
+  DriveTrain driveTrain;
+  double setpoint;
+  double startAngle;
+  public turnDegree(DriveTrain dt, double sp) {
+    driveTrain =dt;
+    setpoint = sp;
+    addRequirements(driveTrain);
     // Use addRequirements() here to declare subsystem dependencies.
   }
-  
+
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    startAngle = driveTrain.getHeading();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.bringIntakeDown();
-    intake.setIntakeRoller(-Constants.IntakeSpeed);
-    intake.setSpinTake(1);
+    if(setpoint<0){
+      driveTrain.drive(-.2, .2);
+    }
+    else{
+      driveTrain.drive(.2, -.2);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intake.stop();
+    driveTrain.stop();
   }
 
   // Returns true when the command should end.
   @Override
-  public boolean isFinished() {
-    return false;
+  public boolean isFinished() { 
+    if(setpoint >0 && (driveTrain.getHeading()>setpoint+startAngle)){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }
+ 

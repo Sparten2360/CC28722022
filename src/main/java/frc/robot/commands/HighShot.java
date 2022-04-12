@@ -6,38 +6,53 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.subsystems.Flywheel;
+import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 
-public class IntakeBall extends CommandBase {
-  /** Creates a new IntakeBall. */
-  Intake intake;
-  public IntakeBall(Intake i) {
-    intake = i;
-    addRequirements(intake);
+public class HighShot extends CommandBase {
+  /** Creates a new HighShot. */
+  Indexer indexer;
+  Flywheel flywheel;
+  public HighShot(Flywheel f,Indexer index) {
+    flywheel = f;
+    indexer =index;
+    addRequirements(flywheel,indexer);
     // Use addRequirements() here to declare subsystem dependencies.
   }
-  
+
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    flywheel.resetPID();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.bringIntakeDown();
-    intake.setIntakeRoller(-Constants.IntakeSpeed);
-    intake.setSpinTake(1);
+    flywheel.setTopFlywheelRPM(4500);
+    flywheel.setBottomFlywheelRPM(4500);
+    if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
+      indexer.setIndex(Constants.shootingSpeed);
+    }
+    else{
+      indexer.stop();
+    }
   }
+
+
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intake.stop();
+    flywheel.stop();
+    indexer.stop();
+    flywheel.resetPID();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return false; //!indexer.getBallReady()&&!indexer.getballinItake();
   }
 }

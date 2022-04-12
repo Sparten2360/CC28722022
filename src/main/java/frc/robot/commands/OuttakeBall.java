@@ -6,14 +6,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 
 public class OuttakeBall extends CommandBase {
   private Intake intake;
+  private Indexer indexer;
   /** Creates a new OuttakeBall. */
-  public OuttakeBall(Intake i) {
+  public OuttakeBall(Intake i,Indexer in) {
     intake = i;
-    addRequirements(intake);
+    indexer = in;
+    addRequirements(intake,indexer);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -24,13 +27,16 @@ public class OuttakeBall extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.setIntakeRoller(Constants.OuttakeSpeed);
+    intake.setIntakeRoller(-Constants.OuttakeSpeed);
+    intake.setSpinTake(-1);
+    indexer.setIndex(Constants.OuttakeSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     intake.stop();
+    indexer.stop();
   }
 
   // Returns true when the command should end.
