@@ -29,14 +29,14 @@ public class HighShotAuto extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    flywheel.setTopFlywheelRPM(4500);
-    flywheel.setBottomFlywheelRPM(4500);
-    if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
-      indexer.setIndex(Constants.shootingSpeed);
-    }
-    else{
-      indexer.stop();
-    }
+    flywheel.setTopFlywheelRPM(5400);
+      flywheel.setBottomFlywheelRPM(5400);
+      if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
+        indexer.setIndex(.65);
+      }
+      else{
+        indexer.stop();
+      }
   }
 
   // Called once the command ends or is interrupted.

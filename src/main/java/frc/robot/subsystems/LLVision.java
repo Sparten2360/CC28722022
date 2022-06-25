@@ -23,8 +23,8 @@ public class LLVision extends SubsystemBase {
     gp = table.getEntry("pipeline");
     cm = table.getEntry("camMode");
     led = table.getEntry("ledMode");
-    cm.setNumber(1);
-    led.setNumber(1);
+    cm.setNumber(0);
+    led.setNumber(3);
   }
 
   @Override

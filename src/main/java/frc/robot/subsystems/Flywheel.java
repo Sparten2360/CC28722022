@@ -91,10 +91,11 @@ public class Flywheel extends SubsystemBase {
     return(bottomrFlywheelPIDController.atSetpoint());
     //(bottomflywheelEncoder.getVelocity()>rpm);
   }
-  public void setTopMotors(double speed){
+  public void setMotors(double speed){
     topFlywheelmotor.set(speed);
-    
+    bottomFlywheelmotor.set(speed);
   }
+  
   public double getBottomMotorRpm(){
     return bottomflywheelEncoder.getVelocity();
   }

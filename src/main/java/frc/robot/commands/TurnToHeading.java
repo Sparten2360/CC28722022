@@ -36,7 +36,7 @@ public class TurnToHeading extends PIDCommand {
     // Use addRequirements() here to declare subsystem dependencies.
     // Configure additional PID options by calling `getController` here
     addRequirements(dt);
-    getController().setTolerance(1.25,1);
+    getController().setTolerance(3,.15);
     getController().enableContinuousInput(-360, 360);
     drivetrain = dt;
     SmartDashboard.putNumber("gyro error", getController().getPositionError());

@@ -5,15 +5,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Flywheel;
 
-public class BringIntakeDown extends CommandBase {
-  /** Creates a new BringIntakeDown. */
-  private Intake intake;
-  public boolean finished;
-  public BringIntakeDown(Intake i) {
-    intake = i;
-    addRequirements(intake);
+public class ShooterIntake extends CommandBase {
+  /** Creates a new ShooterIntake. */
+  Flywheel flywheel;
+  public ShooterIntake(Flywheel f) {
+    flywheel = f;
+    addRequirements(flywheel);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -26,18 +25,18 @@ public class BringIntakeDown extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.bringIntakeDown();   
+    flywheel.setMotors(-.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted){
-  intake.stop();
+  public void end(boolean interrupted) {
+    flywheel.stop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return intake.getPostion();
+    return false;
   }
 }

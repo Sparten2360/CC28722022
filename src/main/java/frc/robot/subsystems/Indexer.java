@@ -20,7 +20,7 @@ import frc.robot.Constants;
 
 public class Indexer extends SubsystemBase {
   private final VictorSPX indexMotor = new VictorSPX(Constants.indexMotorID);
-  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  private final I2C.Port i2cPort = I2C.Port.kMXP;
   private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
   //private final ColorSensorV3 colorSensor2 = new ColorSensorV3(I2C.Port.kMXP);
   public boolean ballinindexer = false;
@@ -58,6 +58,17 @@ public class Indexer extends SubsystemBase {
   }*/
   public int getred(){
     return colorSensor.getRed();
+  }
+  public boolean ballRightColor(){
+   if(DriverStation.getAlliance().equals(Alliance.Red)&&(getred()>getblue())){
+    return true;
+   }
+   else if(DriverStation.getAlliance().equals(Alliance.Blue)&&(getblue()>getred())){
+    return true;
+   }
+   else{
+    return false;
+   }
   }
   /*public int getRed2(){
     return colorSensor2.getRed();

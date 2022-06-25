@@ -90,12 +90,12 @@ public final class Constants {
     public static final int solenoid6ID = 5;
     public static final int solenoid7ID = 3;
     public static final int Solenoid8ID = 4;
-    public static final int Ballchecktolerance = 300;
+    public static final int Ballchecktolerance = 200;
     public static final double gyroKp = 0.01;
     public static final double gyroKi = 0;
     public static final double gyroKd = 0;
     public static final double IdleFlywheelSpeed = 000;
-    public static final double shootingSpeed = .15;
+    public static final double shootingSpeed = .1;
     public static final int spinTakeStallLimit = 0;
     public static final int spinTakeFreeLimit = 0;
     public static final int topFlywheelMotorFreeCurrentLimit = 0;

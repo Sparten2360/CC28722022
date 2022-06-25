@@ -80,10 +80,10 @@ public class DriveTrain extends SubsystemBase {
     rightLeader.configNeutralDeadband(.01);
     leftFollower.configNeutralDeadband(.01);
     rightFollower.configNeutralDeadband(.01);
-    leftLeader.configOpenloopRamp(.7);
-    leftFollower.configOpenloopRamp(.7);
-    rightLeader.configOpenloopRamp(.7);
-    rightFollower.configOpenloopRamp(.7); 
+    leftLeader.configOpenloopRamp(.5);
+    leftFollower.configOpenloopRamp(.5);
+    rightLeader.configOpenloopRamp(.5);
+    rightFollower.configOpenloopRamp(.5); 
     /*StatorCurrentLimitConfiguration leftCurrentLimit = new StatorCurrentLimitConfiguration(true, 120,100, 1.0);
     SupplyCurrentLimitConfiguration leftSupplyCurrentLimit = new SupplyCurrentLimitConfiguration(true, 90, 100, .5);
     StatorCurrentLimitConfiguration rightCurrentLimit = new StatorCurrentLimitConfiguration(true, 90, 100, 1.0);

@@ -29,19 +29,23 @@ public class HighAndFarShot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    flywheel.setTopFlywheelRPM(4500);
-    flywheel.setBottomFlywheelRPM(4500);
-    if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
-      indexer.setIndex(Constants.shootingSpeed);
-    }
-    else{
-      indexer.stop();
-    }
+    flywheel.setTopFlywheelRPM(5400);
+      flywheel.setBottomFlywheelRPM(5400);
+      if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
+        indexer.setIndex(.65);
+      }
+      else{
+        indexer.stop();
+      }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    flywheel.stop();
+    indexer.stop();
+    flywheel.resetPID();
+  }
 
   // Returns true when the command should end.
   @Override

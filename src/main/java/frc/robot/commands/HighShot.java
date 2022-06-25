@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Flywheel;
@@ -31,13 +33,13 @@ public class HighShot extends CommandBase {
   @Override
   public void execute() {
     flywheel.setTopFlywheelRPM(4500);
-    flywheel.setBottomFlywheelRPM(4500);
-    if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
-      indexer.setIndex(Constants.shootingSpeed);
-    }
-    else{
-      indexer.stop();
-    }
+      flywheel.setBottomFlywheelRPM(5250);
+      if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
+        indexer.setIndex(.15);
+      }
+      else{
+        indexer.stop();
+      }
   }
 
 

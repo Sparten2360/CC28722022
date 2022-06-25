@@ -30,14 +30,14 @@ public class LowShot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    flywheel.setTopFlywheelRPM(3500);
-    flywheel.setBottomFlywheelRPM(0);
-    if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
-      indexer.setIndex(Constants.shootingSpeed);
-    }
-    else{
-      indexer.stop();
-    }
+    flywheel.setTopFlywheelRPM(2500);
+      flywheel.setBottomFlywheelRPM(2500);
+      if(flywheel.topflywheelAtSpeed()&&flywheel.bottomrflywheelAtSpeed()){
+        indexer.setIndex(Constants.shootingSpeed);
+      }
+      else{
+        indexer.stop();
+      }
   }
 
   // Called once the command ends or is interrupted.

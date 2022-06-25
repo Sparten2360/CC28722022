@@ -26,7 +26,6 @@ public class LimeLightAim extends CommandBase {
   @Override
   public void initialize() {
     LLaimPIDController.setTolerance(.5,.00125);
-    
     LLaimPIDController.enableContinuousInput(-32.9, 32.9);
   }
 
