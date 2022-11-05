@@ -20,7 +20,7 @@ import frc.robot.Constants;
 
 public class Indexer extends SubsystemBase {
   private final VictorSPX indexMotor = new VictorSPX(Constants.indexMotorID);
-  private final I2C.Port i2cPort = I2C.Port.kMXP;
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
   //private final ColorSensorV3 colorSensor2 = new ColorSensorV3(I2C.Port.kMXP);
   public boolean ballinindexer = false;

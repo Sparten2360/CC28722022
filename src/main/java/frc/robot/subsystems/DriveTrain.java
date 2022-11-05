@@ -152,7 +152,7 @@ public class DriveTrain extends SubsystemBase {
     return new DifferentialDriveWheelSpeeds(getLeftVelocity(),getRightVelocity());
   }
   public void drive(Joystick controller,Double Speed){
-    Ddrive.arcadeDrive( controller.getRawAxis(1)*.9, controller.getRawAxis(2)*.6);
+    Ddrive.arcadeDrive( controller.getRawAxis(Constants.XboxLeftYaxis)*.9, controller.getRawAxis(Constants.XboxRightXaxis)*.6);
   }
   public void ChessyDrive(Joystick controller, double Speed){
     Ddrive.curvatureDrive(controller.getRawAxis(1)*.9, controller.getRawAxis(2)*.9, fastTurn);
